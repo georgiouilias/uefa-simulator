@@ -1,0 +1,16 @@
+.team-image{
+  width: 25px;
+  padding: 5px;
+}
+
+.position-text{
+  text-align: right;
+}
+
+.team-show-lightgrey{
+  background-color: lightgray;
+}
+
+.align-values{
+  text-align: center;
+}

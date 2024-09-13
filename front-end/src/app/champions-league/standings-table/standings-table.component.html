@@ -1,0 +1,54 @@
+<div>
+  <div>
+    <h1>League phase Standing</h1>
+    <table>
+      <thead>
+        <tr>
+          <td>Position</td>
+          <td>Team</td>
+          <td>Played</td>
+          <td>Wins</td>
+          <td>Draws</td>
+          <td>Loses</td>
+          <td>For</td>
+          <td>Against</td>
+          <td>Diff.</td>
+          <td>Points</td>
+          <td>Form</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let team of teamsStandingArray; let i = index"  [ngClass]="{'team-show-lightgrey': i % 2 !== 0 }">
+          <td class="position-text"> {{i+ 1}}</td>
+          <td> <img [src]="team.logo" class="team-image"> {{team.name}}</td>
+          <td class="align-values"> {{team.played}} </td>
+          <td class="align-values"> {{team.wins}} </td>
+          <td class="align-values"> {{team.draws}} </td>
+          <td class="align-values"> {{team.loses}} </td>
+          <td class="align-values"> {{team.gFor}} </td>
+          <td class="align-values"> {{team.gAgainst}} </td>
+          <td class="align-values"> {{team.gFor - team.gAgainst}} </td>
+          <td class="align-values"> {{team.points}} </td>
+          <td class="align-values"> {{team.lastFiveMatches}} </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div>
+    <table *ngFor="let round of teamsMatchesArray; let roundIndex = index">
+      <thead>
+        <h1>Round {{roundIndex + 1}}</h1>
+
+        <td>Position</td>
+        <td>Team</td>
+        <td>Played</td>
+        <td>Wins</td>
+        <td>Draws</td>
+
+      </thead>
+        <tr *ngFor="let match of round">
+          <td> {{match.id}}<img [src]="match.homeTeam.logo" class="team-image">{{ match.homeTeam.codeName }} - {{ match.awayTeam.codeName }}<img [src]="match.awayTeam.logo" class="team-image"></td>
+        </tr>
+      </table>
+  </div>
+</div>

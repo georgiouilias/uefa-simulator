@@ -1,0 +1,63 @@
+.table-body-display{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.table-cells-display{
+  border: 2px solid black;
+}
+
+.selected-team {
+  background-color: lightgreen;
+}
+
+.unavailable-team {
+  background-color: lightcoral;
+}
+
+.img-size-margin{
+  height: 150px;
+  width: 150px;
+  margin-bottom: 10px;
+}
+
+.draw-team-display{
+  min-height: 170px;
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.opponent-teams-list{
+  list-style-type: none;
+}
+
+.team-play-home {
+  background-color: white;
+  color: black;
+}
+
+.team-play-away {
+  background-color: lightgrey;
+  color: black;
+}
+
+.team-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.team-name {
+  margin-left: 10px;
+  flex-grow: 1;
+}
+
+.match-location {
+  margin-left: 10px;
+  font-weight: bold;
+}

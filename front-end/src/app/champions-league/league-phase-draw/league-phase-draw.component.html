@@ -1,0 +1,32 @@
+<div>
+  <h1>Pot {{ currentPotIndex + 1 }} Teams</h1>
+  <table>
+    <tbody class="table-body-display">
+      <tr *ngFor="let team of this.pots[currentPotIndex]; let i = index" [ngClass]="{ 'selected-team': isOriginalTeam(shuffledPot[currentPotIndex][this.currentTeamIndex], team) === 'current', 'unavailable-team': isOriginalTeam(shuffledPot[currentPotIndex][this.currentTeamIndex], team) === 'selected'}">
+        <td id="{{team.id}}" class="table-cells-display"> <img height="70px" width="70px" src="{{ team.logo }}"></td>
+      </tr>
+    </tbody>
+  </table>
+  <div *ngIf="shuffledPot.length > 0">
+    <div class="draw-team-display">
+      <strong>{{shuffledPot[currentPotIndex][currentTeamIndex].name}}</strong>
+      <img src="{{ shuffledPot[currentPotIndex][currentTeamIndex].logo }}" class="img-margin">
+    </div>
+
+    <div>
+      <button (click)="calculateOpponentsButton()" *ngIf="nextButtonStatus === 'calculateOpponents'">Calculate Opponents</button>
+      <button (click)="showNextTeam()" *ngIf="nextButtonStatus === 'showNextTeam'">Draw Next Team</button>
+      <button (click)="showNextPot()" *ngIf="nextButtonStatus === 'showNextPot'">Draw Next Pot</button>
+      <button (click)="showAllMatchTables()" *ngIf="nextButtonStatus === 'showAllMatchTables'" [routerLink]="'/champions-league/all-opponents-table'" class="button-display">Show All Matches</button>
+    </div>
+  </div>
+
+  <div *ngIf="calculatedOpponents" class="opponent-teams-list">
+    <div class="team-container" *ngFor="let team of allOpponentsArray" [ngClass]="{ 'team-play-home': team.isPlayAtHome, 'team-play-away': !team.isPlayAtHome }">
+      <img src="{{ team.logo }}" height="45px" width="45px">
+      <span class="team-name">{{team.name}}</span>
+      <span class="match-location">{{ team.isPlayAtHome ? 'H' : 'A' }}</span>
+    </div>
+  </div>
+
+</div>

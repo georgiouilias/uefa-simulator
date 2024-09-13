@@ -1,0 +1,41 @@
+<div>
+  <button (click)="prevPot()" [disabled]="currentPot === 1">Previous Pot</button>
+  <button (click)="nextPot()" [disabled]="currentPot === totalPots">Next Pot</button>
+
+  <table>
+    <thead>
+      <tr>
+        <th colspan="9" class="align-titles">Opponents</th>
+      </tr>
+      <tr>
+        <td></td>
+        <td colspan="2" class="align-titles">Pot 1</td>
+        <td colspan="2" class="align-titles">Pot 2</td>
+        <td colspan="2" class="align-titles">Pot 3</td>
+        <td colspan="2" class="align-titles">Pot 4</td>
+      </tr>
+      <tr>
+        <td class="align-titles">Pot {{ currentPot  }}</td>
+        <td class="align-titles team-play-home">Home</td>
+        <td class="align-titles team-play-away">Away</td>
+        <td class="align-titles team-play-home">Home</td>
+        <td class="align-titles team-play-away">Away</td>
+        <td class="align-titles team-play-home">Home</td>
+        <td class="align-titles team-play-away">Away</td>
+        <td class="align-titles team-play-home">Home</td>
+        <td class="align-titles team-play-away">Away</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let team of getTeamsByPot(currentPot )">
+        <td>
+          <img [src]="team.logo" class="team-image">
+        </td>
+        <td *ngFor="let opponent of getOpponentTeams(team)">
+          <img [src]="opponent.logo" alt="{{ opponent.name }}" [ngClass]="{ 'team-play-home': opponent.isPlayAtHome, 'team-play-away': !opponent.isPlayAtHome }">
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <button [routerLink]="'/champions-league/standings-table'" class="button-display">Go to Standings</button>
+  </div>

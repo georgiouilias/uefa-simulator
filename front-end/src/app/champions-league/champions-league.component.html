@@ -1,0 +1,26 @@
+<div>
+  <h1>League Phase Teams</h1>
+
+  <button *ngIf="!dataFetched" (click)="handleClick()">Show Pots</button>
+
+  <div *ngIf="!dataFetched">
+    <p>{{loadingText}}</p>
+  </div>
+
+  <div *ngIf="dataFetched" class="pots-display">
+    <div *ngFor="let pot of pots; let groupIndex = index">
+      <h3>Pot {{ groupIndex + 1 }}</h3>
+      <ol>
+        <li *ngFor="let team of pot">
+          <p class="team-display"><img src="{{team.logo}}" class="img-size-margin">{{team.shortName}}</p>
+        </li>
+      </ol>
+    </div>
+  </div>
+
+  <div *ngIf="dataFetched" class="start-draw-button">
+    <button [routerLink]="'/champions-league/league-phase-draw'" class="button-display">Start Draw</button>
+  </div>
+
+</div>
+<router-outlet></router-outlet>
